@@ -1,0 +1,43 @@
+.app-search-bar{
+    margin: 10px;
+    padding: 8px; 
+
+    height: 80px;
+    
+    display: flex;
+    justify-content: space-around;
+
+    opacity: .29;
+    background-color: var(--black);
+    border-radius: 25px;
+    
+    .query{
+        margin: 10px;
+        padding: 11px;
+        flex-grow: 2;
+
+        font-weight: 800;
+
+        opacity: 1;
+        background-color: var(--secondary);
+        border-radius: 10px;
+    }
+
+    .genre-select{
+        margin: 10px;
+        padding: 11px;
+        flex-grow: 1;
+
+        border-radius: 10px;
+    }
+
+    .element-select{
+        margin: 10px;
+        padding: 11px;
+        flex-grow: 1;
+
+        border-radius: 10px;
+    }
+
+
+}
