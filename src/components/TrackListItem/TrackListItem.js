@@ -32,6 +32,14 @@ const TrackListItem = ({ track }) => {
             ))}
           </span>
         </div>
+        <div className="elements-pills-container">
+          <span className="pills-title">Elements:</span>
+          <span className="pills-container">
+            {track.elements.map((element) => (
+              <Pill key={element.id} element={element} />
+            ))}
+          </span>
+        </div>
       </div>
     </div>
   );
