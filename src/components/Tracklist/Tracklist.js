@@ -29,8 +29,8 @@ const TrackList = () => {
 
   return (
     <div className="tracklist-container">
-      {tracks.map((item) => (
-        <TrackListItem key={item.id} track={item} />
+      {tracks.map((track) => (
+        <TrackListItem key={track.id} track={track} />
       ))}
     </div>
   );
