@@ -4,11 +4,12 @@ import Pill from "../PIll/Pill";
 import "./TrackListItem.scss";
 
 const TrackListItem = ({ track }) => {
+  console.log(track);
   return (
     <div className="tracklist-item">
       <div className="img-col">
         {/* This image source will be refactored for production to talk to firebase */}
-        <img src="/img/be_wwafawdwg.png" className="item-img"></img>
+        <img src="/img/be_wwafawdwg.png" className="item-img" alt=""></img>
       </div>
 
       <div className="info-col">
@@ -28,7 +29,7 @@ const TrackListItem = ({ track }) => {
           <span className="pills-title">Genre:</span>
           <span className="pills-container">
             {track.genres.map((genre) => (
-              <Pill key={genre.id} element={genre} />
+              <Pill key={genre.id} item={genre} />
             ))}
           </span>
         </div>
@@ -36,7 +37,7 @@ const TrackListItem = ({ track }) => {
           <span className="pills-title">Elements:</span>
           <span className="pills-container">
             {track.elements.map((element) => (
-              <Pill key={element.id} element={element} />
+              <Pill key={element.id} item={element} />
             ))}
           </span>
         </div>
