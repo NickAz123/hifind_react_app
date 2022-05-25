@@ -1,0 +1,14 @@
+.tracklist-item{
+    display: flex;
+    // justify-content: space-around;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border-radius: 25px;
+    background-color: var(--blackFaded);
+
+    .tracklist-img{
+        max-width: 300px;
+        background-color: green;
+    }
+}

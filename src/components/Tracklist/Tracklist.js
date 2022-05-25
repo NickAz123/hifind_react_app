@@ -21,7 +21,6 @@ const TrackList = () => {
       .get(rootUrl + "/api/" + apiVersion + "/tracks")
       .then((res) => {
         setTracks(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

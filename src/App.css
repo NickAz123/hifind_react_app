@@ -4,9 +4,18 @@
     --orange: #FCA311;
     --black: #000000;
 
+    --primaryFaded: #14213d6e;
+    --secondaryFaded: #e5e5e5b4;
+    --blackFaded: #0000003a;
+
     background-color: var(--primary);
 }
 
 .application-container{
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+
     background-color: var(--primary);
 }

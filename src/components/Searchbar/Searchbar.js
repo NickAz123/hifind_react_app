@@ -5,15 +5,14 @@ import "./Searchbar.scss";
 const Searchbar = () => {
   return (
     <div className="app-search-bar">
-      <input className="query"></input>
-      <select className="genre-select">
-        <option value={0}>Option 1</option>
-        <option value={1}>Option 2</option>
-      </select>
-      <select className="element-select">
-        <option value={0}>Option 1</option>
-        <option value={1}>Option 2</option>
-      </select>
+      <input className="query" placeholder="Search..."></input>
+      <div className="spacer"></div>
+      <button className="btn genre-select">
+        <span>Genre</span>
+      </button>
+      <button className="btn element-select">
+        <span>Elements</span>
+      </button>
     </div>
   );
 };
