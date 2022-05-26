@@ -5,11 +5,12 @@ import "./TrackListItem.scss";
 
 const TrackListItem = ({ track }) => {
   console.log(track);
+  const imgsrc = `/img/${track.imagesrc}.png`;
   return (
     <div className="tracklist-item">
       <div className="img-col">
         {/* This image source will be refactored for production to talk to firebase */}
-        <img src="/img/be_wwafawdwg.png" className="item-img" alt=""></img>
+        <img src={imgsrc} className="item-img" alt=""></img>
       </div>
 
       <div className="info-col">
