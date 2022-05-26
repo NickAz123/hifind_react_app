@@ -1,5 +1,3 @@
-import Searchbar from "./components/Searchbar/Searchbar";
-import Tracklist from "./components/Tracklist/Tracklist";
 import Create from "./pages/Create";
 import Home from "./pages/Home";
 import { Route, Switch } from "react-router-dom";

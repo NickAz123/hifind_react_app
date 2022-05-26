@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Pill from "../PIll/Pill";
 
 import "./TrackListItem.scss";
 
-const TrackListItem = ({ track }) => {
-  console.log(track);
+const TrackListItem = ({ track, getDetails }) => {
   const imgsrc = `/img/${track.imagesrc}.png`;
+
   return (
-    <div className="tracklist-item">
+    <div className="tracklist-item" onClick={() => getDetails(track.id)}>
       <div className="img-col">
         {/* This image source will be refactored for production to talk to firebase */}
         <img src={imgsrc} className="item-img" alt=""></img>

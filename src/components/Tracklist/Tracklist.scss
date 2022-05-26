@@ -1,4 +1,18 @@
 .tracklist-container{
-    display:flex;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+
+    .tracklist-list{
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        // flex-grow: 2;
+    }
+
+    .tracklist-details{
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        // flex-grow: 2;
+    }
 }
