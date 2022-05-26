@@ -11,11 +11,17 @@ const TrackList = () => {
   //Temporary state. Need to pass state properly for live refresh later.
   let [tracks, setTracks] = useState([]);
   let [detailsOpen, setDetailsOpen] = useState(false);
-  let [selectedTrack, setSelectedTrack] = useState({});
+  let [selectedTrack, setSelectedTrack] = useState(null);
 
   useEffect(() => {
     getTracks();
   }, []);
+
+  useEffect(() => {
+    if (selectedTrack != null) {
+      setDetailsOpen(true);
+    }
+  }, [selectedTrack]);
 
   const getTracks = async () => {
     const rootUrl = process.env.REACT_APP_LOCAL_SERVER;
@@ -32,8 +38,7 @@ const TrackList = () => {
 
   const getDetails = (id) => {
     console.log(id);
-    setSelectedTrack({ name: "example 1" });
-    setDetailsOpen(true);
+    setSelectedTrack({ name: `example ${id}` });
   };
 
   return (
@@ -45,7 +50,7 @@ const TrackList = () => {
       </div>
       {detailsOpen ? (
         <div className="tracklist-details">
-          <TrackDetails message="waka waka" />
+          <TrackDetails track={selectedTrack} />
         </div>
       ) : null}
     </div>

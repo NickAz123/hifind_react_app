@@ -4,10 +4,10 @@ import Tracklist from "../components/Tracklist/Tracklist";
 
 function Home() {
   return (
-    <div>
+    <>
       <Searchbar />
       <Tracklist />
-    </div>
+    </>
   );
 }
 
