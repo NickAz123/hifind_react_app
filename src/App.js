@@ -1,12 +1,18 @@
-import "./App.css";
 import Searchbar from "./components/Searchbar/Searchbar";
 import Tracklist from "./components/Tracklist/Tracklist";
+import Create from "./pages/Create";
+import Home from "./pages/Home";
+import { Route, Switch } from "react-router-dom";
+
+import "./App.css";
 
 function App() {
   return (
     <div className="application-container">
-      <Searchbar />
-      <Tracklist />
+      <Switch>
+        <Route path="/create" exact component={Create} />
+        <Route path="/" exact component={Home} />
+      </Switch>
     </div>
   );
 }

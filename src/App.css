@@ -8,6 +8,8 @@
     --secondaryFaded: #e5e5e5b4;
     --blackFaded: #0000003a;
 
+    --faded: #854f1ee0;
+
     background-color: var(--primary);
 }
 
