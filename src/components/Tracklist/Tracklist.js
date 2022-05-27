@@ -17,7 +17,7 @@ const TrackList = () => {
 
   useEffect(() => {
     getTracks();
-  });
+  }, []);
 
   useEffect(() => {
     if (selectedTrack != null) {
