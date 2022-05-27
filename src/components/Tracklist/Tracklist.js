@@ -13,9 +13,11 @@ const TrackList = () => {
   let [detailsOpen, setDetailsOpen] = useState(false);
   let [selectedTrack, setSelectedTrack] = useState(null);
 
+  const rootUrl = process.env.REACT_APP_LOCAL_SERVER + "/api/" + apiVersion;
+
   useEffect(() => {
     getTracks();
-  }, []);
+  });
 
   useEffect(() => {
     if (selectedTrack != null) {
@@ -24,10 +26,8 @@ const TrackList = () => {
   }, [selectedTrack]);
 
   const getTracks = async () => {
-    const rootUrl = process.env.REACT_APP_LOCAL_SERVER;
-
     axios
-      .get(rootUrl + "/api/" + apiVersion + "/tracks")
+      .get(rootUrl + "/tracks")
       .then((res) => {
         setTracks(res.data);
       })
@@ -36,9 +36,15 @@ const TrackList = () => {
       });
   };
 
-  const getDetails = (id) => {
-    console.log(id);
-    setSelectedTrack({ name: `example ${id}` });
+  const getDetails = async (id) => {
+    axios
+      .get(rootUrl + `/tracks/${id}`)
+      .then((res) => {
+        setSelectedTrack(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
