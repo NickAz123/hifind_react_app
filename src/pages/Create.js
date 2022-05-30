@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import axios from "axios";
+import $ from "jquery";
+import React, { useEffect, useState } from "react";
+import { apiVersion } from "../constants/ConnectionVariables";
+
 import "./Create.scss";
 
 function Create() {
@@ -15,10 +19,72 @@ function Create() {
     elements: [],
   });
 
+  const [genres, setGenres] = useState([]);
+  const [elements, setElements] = useState([]);
+
+  const rootUrl = process.env.REACT_APP_LOCAL_SERVER + "/api/" + apiVersion;
+
+  useEffect(() => {
+    getDropdowns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getDropdowns = async () => {
+    axios
+      .get(rootUrl + "/genres")
+      .then((res) => {
+        setGenres(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get(rootUrl + "/elements")
+      .then((res) => {
+        setElements(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const updateTrack = (e) => {
     setTrack({
       ...track,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const updateGenres = () => {
+    const arr = [];
+
+    genres.forEach((genre) => {
+      let target = `#genre-checkbox-${genre.id}`;
+      if ($(target).prop("checked")) {
+        arr.push(genre.id);
+      }
+    });
+
+    setTrack({
+      ...track,
+      genres: arr,
+    });
+  };
+
+  const updateElements = () => {
+    const arr = [];
+
+    elements.forEach((element) => {
+      let target = `#element-checkbox-${element.id}`;
+      if ($(target).prop("checked")) {
+        arr.push(element.id);
+      }
+    });
+
+    setTrack({
+      ...track,
+      elements: arr,
     });
   };
 
@@ -80,6 +146,45 @@ function Create() {
         onChange={updateTrack}
         name="imagesrc"
       ></input>
+      <br></br>
+      <label>Genre</label>
+      <div>
+        {genres.map((genre) => {
+          return (
+            <div key={genre.id}>
+              <input
+                type="checkbox"
+                id={`genre-checkbox-${genre.id}`}
+                value={genre.id}
+                name="genre"
+                key={genre.id}
+                onChange={() => updateGenres()}
+              />
+              {genre.name}
+              <br></br>
+            </div>
+          );
+        })}
+      </div>
+      <br></br>
+      <div>
+        {elements.map((element) => {
+          return (
+            <div key={element.id}>
+              <input
+                type="checkbox"
+                id={`element-checkbox-${element.id}`}
+                value={element.id}
+                name="element"
+                key={element.id}
+                onChange={() => updateElements()}
+              />
+              {element.name}
+              <br></br>
+            </div>
+          );
+        })}
+      </div>
       <div>{JSON.stringify(track)}</div>
     </div>
   );
