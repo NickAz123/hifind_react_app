@@ -186,6 +186,15 @@ function Create() {
         name="imagesrc"
       ></input>
       <br></br>
+      <br></br>
+      <label>Description</label>
+      <input
+        type="text"
+        value={track.description}
+        onChange={updateTrack}
+        name="trackdescription"
+      ></input>
+      <br></br>
       <label>Genre</label>
       <div>
         {genres.map((genre) => {
