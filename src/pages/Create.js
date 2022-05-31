@@ -101,7 +101,14 @@ function Create() {
     };
 
     axios.post(rootUrl + "/tracks", newTrack).then((res) => {
-      console.log("response from server", res);
+      let newTrackId = res.data.id;
+
+      track.elements.forEach((e) => {
+        axios.post(rootUrl + "/track_elements", {
+          track_id: newTrackId,
+          element_id: e,
+        });
+      });
     });
   };
 
