@@ -88,6 +88,23 @@ function Create() {
     });
   };
 
+  const submitTrack = () => {
+    let newTrack = {
+      name: track.name,
+      artist: track.artist,
+      producers: track.producers,
+      mixengineer: track.mixengineer,
+      masterengineer: track.masterengineer,
+      releasedate: track.releasedate,
+      imagesrc: track.imagesrc,
+      description: track.description,
+    };
+
+    axios.post(rootUrl + "/tracks", newTrack).then((res) => {
+      console.log("response from server", res);
+    });
+  };
+
   return (
     <div className="create-page">
       <p>This is the post page</p>
@@ -186,6 +203,9 @@ function Create() {
         })}
       </div>
       <div>{JSON.stringify(track)}</div>
+      <button type="button" onClick={submitTrack}>
+        Create
+      </button>
     </div>
   );
 }
