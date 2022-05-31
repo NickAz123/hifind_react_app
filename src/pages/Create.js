@@ -188,12 +188,13 @@ function Create() {
       <br></br>
       <br></br>
       <label>Description</label>
-      <input
+      <textarea
+        style={{ height: "200px", width: "400px" }}
         type="text"
         value={track.description}
         onChange={updateTrack}
-        name="trackdescription"
-      ></input>
+        name="description"
+      ></textarea>
       <br></br>
       <label>Genre</label>
       <div>
