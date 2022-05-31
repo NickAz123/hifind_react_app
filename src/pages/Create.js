@@ -100,16 +100,31 @@ function Create() {
       description: track.description,
     };
 
-    axios.post(rootUrl + "/tracks", newTrack).then((res) => {
-      let newTrackId = res.data.id;
+    axios
+      .post(rootUrl + "/tracks", newTrack)
+      .then((res) => {
+        let newTrackId = res.data.id;
 
-      track.elements.forEach((e) => {
-        axios.post(rootUrl + "/track_elements", {
-          track_id: newTrackId,
-          element_id: e,
+        track.elements.forEach((e) => {
+          axios.post(rootUrl + "/track_elements", {
+            track_id: newTrackId,
+            element_id: e,
+          });
         });
+
+        return newTrackId;
+      })
+      .then((newTrackId) => {
+        track.genres.forEach((g) => {
+          axios.post(rootUrl + "/track_genres", {
+            track_id: newTrackId,
+            genre_id: g,
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    });
   };
 
   return (
