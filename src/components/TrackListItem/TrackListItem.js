@@ -5,6 +5,7 @@ import "./TrackListItem.scss";
 
 const TrackListItem = ({ track, getDetails }) => {
   const imgsrc = `/img/${track.imagesrc}.png`;
+  console.log(track.imagesrc);
 
   return (
     <div className="tracklist-item" onClick={() => getDetails(track.id)}>
@@ -15,7 +16,7 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="info-col">
         <div className="track-title-container">
-          <span className="title">{track.name} | </span>{" "}
+          <span className="title">{track.name} </span>{" "}
           <span className="artist">by {track.artist}</span>
         </div>
         <div className="track-credits">
