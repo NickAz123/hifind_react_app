@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Pill from "../PIll/Pill";
+import { storage } from "../../firebase";
+import { ref, getDownloadURL } from "firebase/storage";
 
 import "./TrackListItem.scss";
 
 const TrackListItem = ({ track, getDetails }) => {
-  const imgsrc = `/img/${track.imagesrc}.png`;
-  console.log(track.imagesrc);
+  const [image, setImage] = useState(null);
+  const imageRef = ref(storage, `album-arts/${track.imagesrc}`);
+
+  useEffect(() => {
+    getDownloadURL(imageRef).then((url) => {
+      setImage(url);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="tracklist-item" onClick={() => getDetails(track.id)}>
       <div className="img-col">
-        {/* This image source will be refactored for production to talk to firebase */}
-        <img src={imgsrc} className="item-img" alt=""></img>
+        <img src={image} className="item-img" alt=""></img>
       </div>
 
       <div className="info-col">

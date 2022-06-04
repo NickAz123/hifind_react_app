@@ -2,7 +2,8 @@ import axios from "axios";
 import $ from "jquery";
 import React, { useEffect, useState } from "react";
 import { apiVersion } from "../constants/ConnectionVariables";
-
+import { storage } from "../firebase";
+import { ref, uploadBytes } from "firebase/storage";
 import "./Create.scss";
 
 function Create() {
@@ -18,9 +19,9 @@ function Create() {
     genres: [],
     elements: [],
   });
-
   const [genres, setGenres] = useState([]);
   const [elements, setElements] = useState([]);
+  const [imageUpload, setImageUpload] = useState(null);
 
   const rootUrl = process.env.REACT_APP_LOCAL_SERVER + "/api/" + apiVersion;
 
@@ -120,6 +121,12 @@ function Create() {
             track_id: newTrackId,
             genre_id: g,
           });
+        });
+      })
+      .then(() => {
+        const imageRef = ref(storage, `album-arts/${track.imagesrc}`);
+        uploadBytes(imageRef, imageUpload).then(() => {
+          console.log("image upload success");
         });
       })
       .catch((err) => {
@@ -234,6 +241,14 @@ function Create() {
           );
         })}
       </div>
+      <br></br>
+      <label>Image</label>
+      <input
+        type="file"
+        onChange={(e) => {
+          setImageUpload(e.target.files[0]);
+        }}
+      />
       <div>{JSON.stringify(track)}</div>
       <button type="button" onClick={submitTrack}>
         Create

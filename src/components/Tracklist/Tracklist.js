@@ -17,6 +17,7 @@ const TrackList = () => {
 
   useEffect(() => {
     getTracks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
