@@ -13,6 +13,7 @@ function TrackDetails({ track }) {
     getDownloadURL(imageRef).then((url) => {
       setImage(url);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [track]);
 
   return (

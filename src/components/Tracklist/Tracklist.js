@@ -7,7 +7,7 @@ import { apiVersion } from "../../constants/ConnectionVariables.js";
 
 import "./Tracklist.scss";
 
-const TrackList = () => {
+const TrackList = ({ searchString }) => {
   //Temporary state. Need to pass state properly for live refresh later.
   let [tracks, setTracks] = useState([]);
   let [detailsOpen, setDetailsOpen] = useState(false);
@@ -17,8 +17,7 @@ const TrackList = () => {
 
   useEffect(() => {
     getTracks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchString]);
 
   useEffect(() => {
     if (selectedTrack != null) {
@@ -26,11 +25,24 @@ const TrackList = () => {
     }
   }, [selectedTrack]);
 
+  const filterDataBySearch = (data, searchString) => {
+    let filteredData = data.filter((val) => {
+      if (searchString === "") {
+        return val;
+      } else if (val.name.toLowerCase().includes(searchString.toLowerCase())) {
+        return val;
+      }
+    });
+
+    return filteredData;
+  };
+
   const getTracks = async () => {
     axios
       .get(rootUrl + "/tracks")
       .then((res) => {
-        setTracks(res.data);
+        let filteredData = filterDataBySearch(res.data, searchString);
+        setTracks(filteredData);
       })
       .catch((err) => {
         console.log(err);
