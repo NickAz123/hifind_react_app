@@ -1,8 +1,41 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { rootUrl } from "../../constants/ConnectionVariables";
+import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 
 import "./Searchbar.scss";
 
 const Searchbar = ({ setSearchString }) => {
+  const [genres, setGenres] = useState(null);
+  const [elements, setElements] = useState(null);
+
+  const loadGenres = () => {
+    axios
+      .get(rootUrl + "/genres")
+      .then((res) => {
+        setGenres(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const loadElements = () => {
+    axios
+      .get(rootUrl + "/elements")
+      .then((res) => {
+        setElements(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    loadGenres();
+    loadElements();
+  }, []);
+
   return (
     <div className="app-search-bar">
       <input
@@ -13,12 +46,14 @@ const Searchbar = ({ setSearchString }) => {
         }}
       ></input>
       <div className="spacer"></div>
-      <button className="btn genre-select">
+      <MultiselectDropdown />
+      {/* <button className="btn genre-select">
         <span>Genre</span>
-      </button>
-      <button className="btn element-select">
+      </button> */}
+      <MultiselectDropdown />
+      {/* <button className="btn element-select">
         <span>Elements</span>
-      </button>
+      </button> */}
     </div>
   );
 };

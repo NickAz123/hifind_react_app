@@ -1,7 +1,7 @@
 import axios from "axios";
 import $ from "jquery";
 import React, { useEffect, useState } from "react";
-import { apiVersion } from "../constants/ConnectionVariables";
+import { rootUrl } from "../constants/ConnectionVariables";
 import { storage } from "../firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import "./Create.scss";
@@ -22,8 +22,6 @@ function Create() {
   const [genres, setGenres] = useState([]);
   const [elements, setElements] = useState([]);
   const [imageUpload, setImageUpload] = useState(null);
-
-  const rootUrl = process.env.REACT_APP_LOCAL_SERVER + "/api/" + apiVersion;
 
   useEffect(() => {
     getDropdowns();

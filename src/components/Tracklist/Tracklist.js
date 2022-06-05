@@ -3,7 +3,7 @@ import axios from "axios";
 
 import TrackListItem from "../TrackListItem/TrackListItem";
 import TrackDetails from "../TrackDetails/TrackDetails";
-import { apiVersion } from "../../constants/ConnectionVariables.js";
+import { rootUrl } from "../../constants/ConnectionVariables.js";
 
 import "./Tracklist.scss";
 
@@ -12,8 +12,6 @@ const TrackList = ({ searchString }) => {
   let [tracks, setTracks] = useState([]);
   let [detailsOpen, setDetailsOpen] = useState(false);
   let [selectedTrack, setSelectedTrack] = useState(null);
-
-  const rootUrl = process.env.REACT_APP_LOCAL_SERVER + "/api/" + apiVersion;
 
   useEffect(() => {
     getTracks();
