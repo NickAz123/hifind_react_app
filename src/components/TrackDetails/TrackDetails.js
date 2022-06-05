@@ -1,17 +1,25 @@
-import React from "react";
+import { getDownloadURL } from "firebase/storage";
+import React, { useState, useEffect } from "react";
+import { getImageRef } from "../../constants/HelperFunctions";
 import Pill from "../PIll/Pill";
 
 import "./TrackDetails.scss";
 
 function TrackDetails({ track }) {
-  const imgsrc = `/img/${track.imagesrc}.png`;
-  console.log(track.description);
+  const [image, setImage] = useState(null);
+  const imageRef = getImageRef(track.imagesrc);
+
+  useEffect(() => {
+    getDownloadURL(imageRef).then((url) => {
+      setImage(url);
+    });
+  }, [track]);
 
   return (
     <div className="track-details-container">
       <div className="track-details-header">
         <div className="img-col">
-          <img src={imgsrc} className="item-img" alt=""></img>
+          <img src={image} className="item-img" alt=""></img>
         </div>
 
         <div className="info-col">

@@ -126,7 +126,7 @@ function Create() {
       .then(() => {
         const imageRef = ref(storage, `album-arts/${track.imagesrc}`);
         uploadBytes(imageRef, imageUpload).then(() => {
-          console.log("image upload success");
+          alert("Success!");
         });
       })
       .catch((err) => {

@@ -4,10 +4,11 @@ import { storage } from "../../firebase";
 import { ref, getDownloadURL } from "firebase/storage";
 
 import "./TrackListItem.scss";
+import { getImageRef } from "../../constants/HelperFunctions";
 
 const TrackListItem = ({ track, getDetails }) => {
   const [image, setImage] = useState(null);
-  const imageRef = ref(storage, `album-arts/${track.imagesrc}`);
+  const imageRef = getImageRef(track.imagesrc);
 
   useEffect(() => {
     getDownloadURL(imageRef).then((url) => {
