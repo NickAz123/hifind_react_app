@@ -17,6 +17,7 @@ const TrackList = ({ searchString }) => {
 
   useEffect(() => {
     getTracks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchString]);
 
   useEffect(() => {
@@ -26,10 +27,18 @@ const TrackList = ({ searchString }) => {
   }, [selectedTrack]);
 
   const filterDataBySearch = (data, searchString) => {
+    let searchStringLower = searchString.toLowerCase();
+
     let filteredData = data.filter((val) => {
       if (searchString === "") {
         return val;
-      } else if (val.name.toLowerCase().includes(searchString.toLowerCase())) {
+      } else if (
+        val.name.toLowerCase().includes(searchStringLower) ||
+        val.artist.toLowerCase().includes(searchStringLower) ||
+        val.producers.toLowerCase().includes(searchStringLower) ||
+        val.mixengineer.toLowerCase().includes(searchStringLower) ||
+        val.masterengineer.toLowerCase().includes(searchStringLower)
+      ) {
         return val;
       }
     });
