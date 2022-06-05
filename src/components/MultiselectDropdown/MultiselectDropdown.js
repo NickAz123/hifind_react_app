@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -22,14 +22,14 @@ const names = [
   "Kelly Snyder",
 ];
 
-export default function MultiselectDropdown() {
-  const [personName, setPersonName] = React.useState([]);
+export default function MultiselectDropdown({ items, label }) {
+  const [itemName, setItemName] = useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setItemName(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
@@ -38,20 +38,20 @@ export default function MultiselectDropdown() {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+        <InputLabel id="demo-multiple-checkbox-label">{label}</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={personName}
+          value={itemName}
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
+          input={<OutlinedInput label={label} />}
           renderValue={(selected) => selected.join(", ")}
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
-              <ListItemText primary={name} />
+          {items.map((item) => (
+            <MenuItem key={item.id} value={item.name}>
+              <Checkbox checked={itemName.indexOf(item.name) > -1} />
+              <ListItemText primary={item.name} />
             </MenuItem>
           ))}
         </Select>

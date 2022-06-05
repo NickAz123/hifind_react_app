@@ -6,8 +6,8 @@ import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 import "./Searchbar.scss";
 
 const Searchbar = ({ setSearchString }) => {
-  const [genres, setGenres] = useState(null);
-  const [elements, setElements] = useState(null);
+  const [genres, setGenres] = useState([]);
+  const [elements, setElements] = useState([]);
 
   const loadGenres = () => {
     axios
@@ -45,15 +45,9 @@ const Searchbar = ({ setSearchString }) => {
           setSearchString(e.target.value);
         }}
       ></input>
-      <div className="spacer"></div>
-      <MultiselectDropdown />
-      {/* <button className="btn genre-select">
-        <span>Genre</span>
-      </button> */}
-      <MultiselectDropdown />
-      {/* <button className="btn element-select">
-        <span>Elements</span>
-      </button> */}
+      {/* <div className="spacer"></div> */}
+      <MultiselectDropdown items={genres} label={"Genres"} />
+      <MultiselectDropdown items={elements} label={"Elements"} />
     </div>
   );
 };
