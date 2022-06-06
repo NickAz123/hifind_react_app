@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { rootUrl } from "../../constants/ConnectionVariables";
-import MultiselectDropdown from "../MultiselectDropdown/MultiselectDropdown";
 
 import "./Searchbar.scss";
 
@@ -45,9 +44,12 @@ const Searchbar = ({ setSearchString }) => {
           setSearchString(e.target.value);
         }}
       ></input>
-      {/* <div className="spacer"></div> */}
-      <MultiselectDropdown items={genres} label={"Genres"} />
-      <MultiselectDropdown items={elements} label={"Elements"} />
+      <button className="btn filter-btn genre-select">
+        <span>Genre</span>
+      </button>
+      <button className="btn filter-btn element-select">
+        <span>Elements</span>
+      </button>
     </div>
   );
 };

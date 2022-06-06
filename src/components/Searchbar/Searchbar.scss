@@ -1,55 +1,39 @@
 .app-search-bar{
-    padding: 8px; 
-    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 5px;
     height: 80px;
-    // opacity: .30;
     
     display: flex;
     justify-content: space-between;
 
-    background-color: var(--blackFaded);
-    border-radius: 25px;
-
     .btn{
         text-align: center;
-        margin: 10px;
-
         font-weight: 700;
-
-        span{
-            opacity: 0.5;
-        }
     }
     
     .query{
         margin: 10px;
-        padding: 11px;
+        padding: 15px;
+        padding-left: 25px;
         flex-grow: 4;
 
         font-weight: 800;
 
-        background-color: var(--secondaryFaded);
         outline: none;
-        border: none;
-        border-radius: 10px;
+        border: solid grey 0.5px;
+        border-radius: 25px;
     }
 
     .spacer{
         flex-grow: 4;
     }
 
-    .genre-select{
+    .filter-btn{
+        margin: 10px;
         flex-grow: 1;
-
-        background-color: var(--secondaryFaded);
-        border-radius: 10px;
-    }
-
-    .element-select{
-        flex-grow: 1;
-
-        background-color: var(--secondaryFaded);
-        border-radius: 10px;
+        border-radius: 0px;
+        border: solid grey 0.5px;
+        border-radius: 25px;
     }
 
 

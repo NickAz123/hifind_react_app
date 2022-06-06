@@ -1,10 +1,8 @@
 .tracklist-item{
     display: flex;
-    margin-bottom: 10px;
     padding: 10px;
 
-    border-radius: 25px;
-    background-color: var(--blackFaded);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.329);
 
     .img-col{
         
@@ -22,7 +20,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        color: white;
+        color: var(--textColor);
 
         .track-title-container{
 
@@ -52,7 +50,7 @@
         .pills-title{
             margin-right: 10px;
             font-size: 15px;
-            color: white;
+            color: var(--textColor)
         }
 
         .genre-pills-container{

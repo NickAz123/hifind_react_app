@@ -1,8 +1,10 @@
 :root{
-    --primary: #14213D;
-    --secondary: #E5E5E5;
+    --primary: #ffffff;
+    --secondary: #f3f3f3;
     --orange: #FCA311;
     --black: #000000;
+
+    --textColor: black;
 
     --primaryFaded: #14213d6e;
     --secondaryFaded: #e5e5e5b4;
@@ -17,8 +19,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-
-    padding: 10px;
+    /* padding: 10px; */
 
     background-color: var(--primary);
 }
