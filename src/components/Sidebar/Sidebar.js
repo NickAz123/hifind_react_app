@@ -9,7 +9,7 @@ function Sidebar() {
   const [genres, setGenres] = useState([]);
   const [elements, setElements] = useState([]);
 
-  const loadGenres = () => {
+  const loadGenres = async () => {
     axios
       .get(rootUrl + "/genres")
       .then((res) => {
@@ -20,7 +20,7 @@ function Sidebar() {
       });
   };
 
-  const loadElements = () => {
+  const loadElements = async () => {
     axios
       .get(rootUrl + "/elements")
       .then((res) => {
@@ -40,6 +40,14 @@ function Sidebar() {
     <div className="sidebar-container">
       <div className="sidebar-filter-title">GENRES</div>
       <div className="filter-options genre-options">
+        {genres.map((genre) => (
+          <FilterOption
+            key={genre.id}
+            id={genre.id}
+            name={genre.name}
+            color={genre.color}
+          />
+        ))}
         <FilterOption />
       </div>
     </div>
