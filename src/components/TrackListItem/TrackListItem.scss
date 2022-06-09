@@ -2,7 +2,7 @@
     display: flex;
     padding: 10px;
 
-    border-bottom: 1px solid rgba(128, 128, 128, 0.329);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.226);
 
     .img-col{
         
@@ -20,7 +20,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
-        color: var(--textColor);
+        color: black;
 
         .track-title-container{
 
@@ -50,7 +50,7 @@
         .pills-title{
             margin-right: 10px;
             font-size: 15px;
-            color: var(--textColor)
+            color: black;
         }
 
         .genre-pills-container{

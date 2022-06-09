@@ -1,5 +1,5 @@
-import Create from "./pages/Create";
-import Home from "./pages/Home";
+import Create from "./pages/Create/Create";
+import Home from "./pages/Home/Home";
 import { Route, Switch } from "react-router-dom";
 
 import "./App.css";

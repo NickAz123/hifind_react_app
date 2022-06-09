@@ -1,8 +1,8 @@
 import axios from "axios";
 import $ from "jquery";
 import React, { useEffect, useState } from "react";
-import { rootUrl } from "../constants/ConnectionVariables";
-import { storage } from "../firebase";
+import { rootUrl } from "../../constants/ConnectionVariables";
+import { storage } from "../../firebase";
 import { ref, uploadBytes } from "firebase/storage";
 import "./Create.scss";
 

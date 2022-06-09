@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Pill from "../PIll/Pill";
 import { getDownloadURL } from "firebase/storage";
+import { getImageRef } from "../../constants/HelperFunctions";
 
 import "./TrackListItem.scss";
-import { getImageRef } from "../../constants/HelperFunctions";
 
 const TrackListItem = ({ track, getDetails }) => {
   const [image, setImage] = useState(null);

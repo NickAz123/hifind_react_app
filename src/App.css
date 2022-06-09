@@ -1,18 +1,13 @@
 :root{
-    --primary: #ffffff;
-    --secondary: #f3f3f3;
-    --orange: #FCA311;
-    --black: #000000;
+    --white: #ffffff;
+    --grey: #f3f3f3;
+    --orange: #EF8354;
+    --darkblue: #2D3142;
+    --blue: #4F5D75;
 
     --textColor: black;
 
-    --primaryFaded: #14213d6e;
-    --secondaryFaded: #e5e5e5b4;
-    --blackFaded: #0000003a;
-
-    --detailsBgFaded: #14213de8;
-
-    background-color: var(--primary);
+    background-color: var(--white);
 }
 
 .application-container{
