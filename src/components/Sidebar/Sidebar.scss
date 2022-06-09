@@ -1,6 +1,8 @@
 .sidebar-container{
-    height: 100%;
-    width: 14vw;
+    max-height: 100%;
+    width: 300px;
+
+    overflow: auto;
 
     display: flex;
     flex-direction: column;
@@ -15,6 +17,9 @@
     .filter-options{
         display: flex;
         flex-direction: column;
+        overflow: auto;
+        
+        max-height: 250px;
     }
     
 }

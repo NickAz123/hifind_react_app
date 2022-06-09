@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import TrackListItem from "./TrackListItem/TrackListItem";
-import TrackDetails from "../../TrackDetails/TrackDetails";
-import { rootUrl } from "../../../constants/ConnectionVariables.js";
+import TrackListItem from "./../TrackListItem/TrackListItem";
+import TrackDetails from "../TrackDetails/TrackDetails";
+import { rootUrl } from "../../constants/ConnectionVariables.js";
 
 import "./Tracklist.scss";
 

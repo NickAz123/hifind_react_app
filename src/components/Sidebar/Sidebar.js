@@ -48,7 +48,17 @@ function Sidebar() {
             color={genre.color}
           />
         ))}
-        <FilterOption />
+      </div>
+      <div className="sidebar-filter-title">ELEMENTS</div>
+      <div className="filter-options element-options">
+        {elements.map((element) => (
+          <FilterOption
+            key={element.id}
+            id={element.id}
+            name={element.name}
+            color={element.color}
+          />
+        ))}
       </div>
     </div>
   );

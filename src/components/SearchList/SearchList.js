@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Searchbar from "./Searchbar/Searchbar";
-import TrackList from "./Tracklist/Tracklist";
+import Searchbar from "./../Searchbar/Searchbar";
+import TrackList from "./../Tracklist/Tracklist";
 import "./SearchList.scss";
 
 function SearchList() {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Pill from "../../../PIll/Pill";
+import Pill from "../PIll/Pill";
 import { getDownloadURL } from "firebase/storage";
-import { getImageRef } from "../../../../constants/HelperFunctions";
+import { getImageRef } from "../../constants/HelperFunctions";
 
 import "./TrackListItem.scss";
 
