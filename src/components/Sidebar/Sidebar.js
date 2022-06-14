@@ -5,7 +5,7 @@ import FilterOption from "../FilterOption/FilterOption";
 
 import "./Sidebar.scss";
 
-function Sidebar() {
+function Sidebar({ setGenreFilter, setElementFilter }) {
   const [genres, setGenres] = useState([]);
   const [elements, setElements] = useState([]);
 
@@ -60,6 +60,7 @@ function Sidebar() {
               id={genre.id}
               name={genre.name}
               color={genre.color}
+              setFilter={setGenreFilter}
             />
           ))}
         </div>
@@ -71,6 +72,7 @@ function Sidebar() {
               id={element.id}
               name={element.name}
               color={element.color}
+              setFilter={setElementFilter}
             />
           ))}
         </div>

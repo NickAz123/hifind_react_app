@@ -4,10 +4,14 @@ import "./FilterOption.scss";
 
 function FilterOption({ id, name, color }) {
   const [bgColor, setBgColor] = useState("#FFFFFF");
-  console.log("color", color);
 
   const styles = {
     background: `${bgColor}`,
+  };
+
+  const selectFilter = (e, filterId) => {
+    console.log("something happened", e.target.checked);
+    console.log("id", filterId);
   };
 
   useEffect(() => {
@@ -22,6 +26,7 @@ function FilterOption({ id, name, color }) {
       onMouseLeave={() => setBgColor("#FFFFFF")}
     >
       <Checkbox
+        onClick={(e) => selectFilter(e, id)}
         size="small"
         sx={{
           "&.Mui-checked": {
