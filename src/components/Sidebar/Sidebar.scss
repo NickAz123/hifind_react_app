@@ -1,25 +1,36 @@
 .sidebar-container{
     max-height: 100%;
     width: 300px;
-
-    overflow: auto;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;
-    background-color: var(--darkblue);
+    background-color: var(--white);
+
+    .sidebar-title{
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .sidebar-filters-container{
+        overflow: auto;        
+    }
 
     .sidebar-filter-title{
-        padding: 10px;
-        font-size: 20px;
-        color: var(--white);
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: var(--blue);
     }
 
     .filter-options{
         display: flex;
         flex-direction: column;
-        overflow: auto;
-        
-        max-height: 250px;
+        margin-bottom: 10px;
+    }
+
+    ::-webkit-scrollbar{
+        width: 0;
     }
     
 }

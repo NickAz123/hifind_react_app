@@ -1,15 +1,37 @@
+import { Checkbox } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./FilterOption.scss";
 
 function FilterOption({ id, name, color }) {
-  const [status, setStatus] = useState(false);
+  const [bgColor, setBgColor] = useState("#FFFFFF");
+  console.log("color", color);
 
-  console.log("inside filter options", name);
+  const styles = {
+    background: `${bgColor}`,
+  };
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <div className="option">{name}</div>;
+  return (
+    <div
+      className="option"
+      style={styles}
+      onMouseEnter={() => setBgColor(`${color}65`)}
+      onMouseLeave={() => setBgColor("#FFFFFF")}
+    >
+      <Checkbox
+        size="small"
+        sx={{
+          "&.Mui-checked": {
+            color: color,
+          },
+        }}
+      />
+      <span>{name}</span>
+    </div>
+  );
 }
 
 export default FilterOption;

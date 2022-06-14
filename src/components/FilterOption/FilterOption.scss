@@ -1,8 +1,12 @@
 .option{
-    padding-left: 10px;
-    padding-bottom: 5px;
-    font-size: 15px;
-    
-    color: var(--darkblue);
-    background-color: var(--blue);
+    font-size: 16px;
+    font-weight: 500;
+    height: 30px;
+    display: flex;
+    margin-bottom: 5px;
+
+    justify-content: start;
+    align-items: center;
+
+    border-radius: 25px;
 }

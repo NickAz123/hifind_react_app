@@ -13,7 +13,8 @@ function Sidebar() {
     axios
       .get(rootUrl + "/genres")
       .then((res) => {
-        setGenres(res.data);
+        var dataSorted = res.data.sort(sortResultsAlphabetically);
+        setGenres(dataSorted);
       })
       .catch((err) => {
         console.log(err);
@@ -24,11 +25,22 @@ function Sidebar() {
     axios
       .get(rootUrl + "/elements")
       .then((res) => {
-        setElements(res.data);
+        var dataSorted = res.data.sort(sortResultsAlphabetically);
+        setElements(dataSorted);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const sortResultsAlphabetically = (x, y) => {
+    if (x.name < y.name) {
+      return -1;
+    }
+    if (x.name > y.name) {
+      return 1;
+    }
+    return 0;
   };
 
   useEffect(() => {
@@ -38,27 +50,30 @@ function Sidebar() {
 
   return (
     <div className="sidebar-container">
-      <div className="sidebar-filter-title">GENRES</div>
-      <div className="filter-options genre-options">
-        {genres.map((genre) => (
-          <FilterOption
-            key={genre.id}
-            id={genre.id}
-            name={genre.name}
-            color={genre.color}
-          />
-        ))}
-      </div>
-      <div className="sidebar-filter-title">ELEMENTS</div>
-      <div className="filter-options element-options">
-        {elements.map((element) => (
-          <FilterOption
-            key={element.id}
-            id={element.id}
-            name={element.name}
-            color={element.color}
-          />
-        ))}
+      <div className="sidebar-title">Filters</div>
+      <div className="sidebar-filters-container">
+        <div className="sidebar-filter-title">Genres</div>
+        <div className="filter-options genre-options">
+          {genres.map((genre) => (
+            <FilterOption
+              key={genre.id}
+              id={genre.id}
+              name={genre.name}
+              color={genre.color}
+            />
+          ))}
+        </div>
+        <div className="sidebar-filter-title">Elements</div>
+        <div className="filter-options element-options">
+          {elements.map((element) => (
+            <FilterOption
+              key={element.id}
+              id={element.id}
+              name={element.name}
+              color={element.color}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
