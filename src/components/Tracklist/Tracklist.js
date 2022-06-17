@@ -35,14 +35,15 @@ const TrackList = ({ searchString, filters }) => {
         return val;
       }
     });
+
     return filteredData;
   };
 
-  const filterData = (data, searchString, filters) => {
+  const filterDataByQuery = (data, query) => {
     let searchStringLower = searchString.toLowerCase();
 
-    let filteredData = data.filter((val) => {
-      if (searchString === "") {
+    const filteredData = data.filter((val) => {
+      if (query === "") {
         return val;
       } else if (
         val.name.toLowerCase().includes(searchStringLower) ||
@@ -54,6 +55,14 @@ const TrackList = ({ searchString, filters }) => {
         return val;
       }
     });
+
+    return filteredData;
+  };
+
+  const filterData = (data, searchString, filters) => {
+    let filteredData = data;
+
+    filteredData = filterDataByQuery(data, searchString);
 
     if (filters.genreFilter.length > 0) {
       filteredData = filterDataByFilters(
