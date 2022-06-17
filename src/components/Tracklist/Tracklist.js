@@ -25,7 +25,20 @@ const TrackList = ({ searchString, filters }) => {
     }
   }, [selectedTrack]);
 
-  const filterDataBySearch = (data, searchString, filters) => {
+  const filterDataByFilters = (filterAr, dataAr, option) => {
+    const filteredData = dataAr.filter((val) => {
+      let resultsAr = val[option].filter((g) => {
+        return filterAr.indexOf(g.id) !== -1;
+      });
+
+      if (resultsAr.length != 0) {
+        return val;
+      }
+    });
+    return filteredData;
+  };
+
+  const filterData = (data, searchString, filters) => {
     let searchStringLower = searchString.toLowerCase();
 
     let filteredData = data.filter((val) => {
@@ -43,15 +56,20 @@ const TrackList = ({ searchString, filters }) => {
     });
 
     if (filters.genreFilter.length > 0) {
-      filteredData = filteredData.filter((val) => {
-        let check = val.genres.filter((g) => {
-          return filters.genreFilter.indexOf(g.id) !== -1;
-        });
+      filteredData = filterDataByFilters(
+        filters.genreFilter,
+        filteredData,
+        "genres"
+      );
+      // filteredData = filteredData.filter((val) => {
+      //   let check = val.genres.filter((g) => {
+      //     return filters.genreFilter.indexOf(g.id) !== -1;
+      //   });
 
-        if (check.length != 0) {
-          return val;
-        }
-      });
+      //   if (check.length != 0) {
+      //     return val;
+      //   }
+      // });
     }
 
     if (filters.elementFilter.length > 0) {
@@ -64,7 +82,7 @@ const TrackList = ({ searchString, filters }) => {
     axios
       .get(rootUrl + "/tracks")
       .then((res) => {
-        let filteredData = filterDataBySearch(res.data, searchString, filters);
+        let filteredData = filterData(res.data, searchString, filters);
         setTracks(filteredData);
       })
       .catch((err) => {
