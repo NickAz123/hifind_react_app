@@ -4,9 +4,12 @@ import axios from "axios";
 import TrackListItem from "./../TrackListItem/TrackListItem";
 import TrackDetails from "../TrackDetails/TrackDetails";
 import { rootUrl } from "../../constants/ConnectionVariables.js";
+import {
+  filterDataByQuery,
+  filterDataByFilters,
+} from "../../constants/HelperFunctions";
 
 import "./Tracklist.scss";
-import { validateCallback } from "@firebase/util";
 
 const TrackList = ({ searchString, filters }) => {
   //Temporary state. Need to pass state properly for live refresh later.
@@ -24,40 +27,6 @@ const TrackList = ({ searchString, filters }) => {
       setDetailsOpen(true);
     }
   }, [selectedTrack]);
-
-  const filterDataByFilters = (filterAr, dataAr, option) => {
-    const filteredData = dataAr.filter((val) => {
-      let resultsAr = val[option].filter((g) => {
-        return filterAr.indexOf(g.id) !== -1;
-      });
-
-      if (resultsAr.length != 0) {
-        return val;
-      }
-    });
-
-    return filteredData;
-  };
-
-  const filterDataByQuery = (data, query) => {
-    let searchStringLower = searchString.toLowerCase();
-
-    const filteredData = data.filter((val) => {
-      if (query === "") {
-        return val;
-      } else if (
-        val.name.toLowerCase().includes(searchStringLower) ||
-        val.artist.toLowerCase().includes(searchStringLower) ||
-        val.producers.toLowerCase().includes(searchStringLower) ||
-        val.mixengineer.toLowerCase().includes(searchStringLower) ||
-        val.masterengineer.toLowerCase().includes(searchStringLower)
-      ) {
-        return val;
-      }
-    });
-
-    return filteredData;
-  };
 
   const filterData = (data, searchString, filters) => {
     let filteredData = data;
