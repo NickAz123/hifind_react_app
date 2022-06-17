@@ -7,7 +7,9 @@ import "./Sidebar.scss";
 
 function Sidebar({ handleFilter }) {
   const [genres, setGenres] = useState([]);
+  const [genresOpen, setGenresOpen] = useState(false);
   const [elements, setElements] = useState([]);
+  const [elementsOpen, setElementsOpen] = useState(false);
 
   const loadGenres = async () => {
     axios
@@ -52,32 +54,47 @@ function Sidebar({ handleFilter }) {
     <div className="sidebar-container">
       <div className="sidebar-title">Filters</div>
       <div className="sidebar-filters-container">
-        <div className="sidebar-filter-title">Genres</div>
-        <div className="filter-options genre-options">
-          {genres.map((genre) => (
-            <FilterOption
-              key={genre.id}
-              id={genre.id}
-              name={genre.name}
-              color={genre.color}
-              handleFilter={handleFilter}
-              category="genre"
-            />
-          ))}
+        <div
+          className="sidebar-filter-title"
+          onClick={() => setGenresOpen(!genresOpen)}
+        >
+          Genres
         </div>
-        <div className="sidebar-filter-title">Elements</div>
-        <div className="filter-options element-options">
-          {elements.map((element) => (
-            <FilterOption
-              key={element.id}
-              id={element.id}
-              name={element.name}
-              color={element.color}
-              handleFilter={handleFilter}
-              category="element"
-            />
-          ))}
+        {genresOpen && (
+          <div className="filter-options genre-options">
+            {genres.map((genre) => (
+              <FilterOption
+                key={genre.id}
+                id={genre.id}
+                name={genre.name}
+                color={genre.color}
+                handleFilter={handleFilter}
+                category="genre"
+              />
+            ))}
+          </div>
+        )}
+
+        <div
+          className="sidebar-filter-title"
+          onClick={() => setElementsOpen(!elementsOpen)}
+        >
+          Elements
         </div>
+        {elementsOpen && (
+          <div className="filter-options element-options">
+            {elements.map((element) => (
+              <FilterOption
+                key={element.id}
+                id={element.id}
+                name={element.name}
+                color={element.color}
+                handleFilter={handleFilter}
+                category="element"
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
