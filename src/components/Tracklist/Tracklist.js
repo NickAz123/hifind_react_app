@@ -61,18 +61,14 @@ const TrackList = ({ searchString, filters }) => {
         filteredData,
         "genres"
       );
-      // filteredData = filteredData.filter((val) => {
-      //   let check = val.genres.filter((g) => {
-      //     return filters.genreFilter.indexOf(g.id) !== -1;
-      //   });
-
-      //   if (check.length != 0) {
-      //     return val;
-      //   }
-      // });
     }
 
     if (filters.elementFilter.length > 0) {
+      filteredData = filterDataByFilters(
+        filters.elementFilter,
+        filteredData,
+        "elements"
+      );
     }
 
     return filteredData;
