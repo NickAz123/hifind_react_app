@@ -2,16 +2,11 @@ import { Checkbox } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./FilterOption.scss";
 
-function FilterOption({ id, name, color }) {
+function FilterOption({ id, name, color, handleFilter, category }) {
   const [bgColor, setBgColor] = useState("#FFFFFF");
 
   const styles = {
     background: `${bgColor}`,
-  };
-
-  const selectFilter = (e, filterId) => {
-    console.log("something happened", e.target.checked);
-    console.log("id", filterId);
   };
 
   useEffect(() => {
@@ -26,7 +21,7 @@ function FilterOption({ id, name, color }) {
       onMouseLeave={() => setBgColor("#FFFFFF")}
     >
       <Checkbox
-        onClick={(e) => selectFilter(e, id)}
+        onClick={() => handleFilter(id, category)}
         size="small"
         sx={{
           "&.Mui-checked": {

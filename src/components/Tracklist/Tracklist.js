@@ -6,8 +6,9 @@ import TrackDetails from "../TrackDetails/TrackDetails";
 import { rootUrl } from "../../constants/ConnectionVariables.js";
 
 import "./Tracklist.scss";
+import { validateCallback } from "@firebase/util";
 
-const TrackList = ({ searchString }) => {
+const TrackList = ({ searchString, filters }) => {
   //Temporary state. Need to pass state properly for live refresh later.
   let [tracks, setTracks] = useState([]);
   let [detailsOpen, setDetailsOpen] = useState(false);
@@ -16,7 +17,7 @@ const TrackList = ({ searchString }) => {
   useEffect(() => {
     getTracks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchString]);
+  }, [searchString, filters]);
 
   useEffect(() => {
     if (selectedTrack != null) {
@@ -24,7 +25,7 @@ const TrackList = ({ searchString }) => {
     }
   }, [selectedTrack]);
 
-  const filterDataBySearch = (data, searchString) => {
+  const filterDataBySearch = (data, searchString, filters) => {
     let searchStringLower = searchString.toLowerCase();
 
     let filteredData = data.filter((val) => {
@@ -41,6 +42,21 @@ const TrackList = ({ searchString }) => {
       }
     });
 
+    if (filters.genreFilter.length > 0) {
+      filteredData = filteredData.filter((val) => {
+        let check = val.genres.filter((g) => {
+          return filters.genreFilter.indexOf(g.id) !== -1;
+        });
+
+        if (check.length != 0) {
+          return val;
+        }
+      });
+    }
+
+    if (filters.elementFilter.length > 0) {
+    }
+
     return filteredData;
   };
 
@@ -48,7 +64,7 @@ const TrackList = ({ searchString }) => {
     axios
       .get(rootUrl + "/tracks")
       .then((res) => {
-        let filteredData = filterDataBySearch(res.data, searchString);
+        let filteredData = filterDataBySearch(res.data, searchString, filters);
         setTracks(filteredData);
       })
       .catch((err) => {
