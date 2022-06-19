@@ -16,8 +16,9 @@ const TrackListItem = ({ track, getDetails }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //get details fetch onClick={() => getDetails(track.id)}
   return (
-    <div className="tracklist-item" onClick={() => getDetails(track.id)}>
+    <div className="tracklist-item">
       <div className="img-col">
         <img src={image} className="item-img" alt=""></img>
       </div>
