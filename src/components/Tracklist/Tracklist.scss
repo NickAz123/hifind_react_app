@@ -1,21 +1,27 @@
 .tracklist-container{
     display: flex;
     flex-direction: row;
-    overflow: hidden;
+    height: 93%;
 
     background-color: var(--white);
     border-radius: 25px;
     margin-top: 15px;
-    
+
     .tracklist-list{
         display:flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
+        overflow: auto;
     }
 
     .tracklist-details{
         margin-left: 20px;
         display: flex;
         flex-direction: column;
+    }
+
+    ::-webkit-scrollbar{
+        width: 0;
     }
 }

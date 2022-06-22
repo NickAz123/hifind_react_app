@@ -13,6 +13,8 @@ const TrackListItem = ({ track, getDetails }) => {
     getDownloadURL(imageRef).then((url) => {
       setImage(url);
     });
+
+    console.log(imageRef);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

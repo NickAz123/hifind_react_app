@@ -48,6 +48,20 @@ function Create() {
       });
   };
 
+  const resetTrack = () => {
+    setTrack({
+      name: "",
+      artist: "",
+      producers: "",
+      mixengineer: "",
+      masterengineer: "",
+      releasedate: "",
+      imagesrc: "",
+      description: "",
+      genres: [],
+      elements: [],
+    });
+  };
   const updateTrack = (e) => {
     setTrack({
       ...track,
@@ -125,10 +139,11 @@ function Create() {
         const imageRef = ref(storage, `album-arts/${track.imagesrc}`);
         uploadBytes(imageRef, imageUpload).then(() => {
           alert("Success!");
+          resetTrack();
         });
       })
       .catch((err) => {
-        console.log(err);
+        alert("Failed to upload track: " + err);
       });
   };
 
