@@ -31,9 +31,20 @@ const TrackListItem = ({ track, getDetails }) => {
           <span className="artist">by {track.artist}</span>
         </div>
         <div className="track-credits">
-          <div>Mixed by {track.mixengineer}</div>
-          <div>Mastered by {track.masterengineer}</div>
-          <div>Produced by {track.producers}</div>
+          <div>
+            Mixed by{" "}
+            {track.mixengineer == "" ? "(Not Available)" : track.mixengineer}
+          </div>
+          <div>
+            Mastered by{" "}
+            {track.masterengineer == ""
+              ? "(Not Available)"
+              : track.masterengineer}
+          </div>
+          <div>
+            Produced by{" "}
+            {track.producers == "" ? "(Not Available)" : track.producers}
+          </div>
         </div>
       </div>
 
