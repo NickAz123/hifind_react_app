@@ -27,9 +27,11 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="info-col">
         <div className="track-title-container">
-          <span className="title">{track.name} </span>{" "}
-          <span className="artist">by {track.artist}</span>
+          <div className="title">{track.name} </div>{" "}
+          <div className="artist">by {track.artist}</div>
         </div>
+      </div>
+      <div className="info-col info-col-2">
         <div className="track-credits">
           <div>
             Mixed by{" "}
@@ -50,7 +52,6 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="pills-col">
         <div className="genre-pills-container">
-          <span className="pills-title">Genre:</span>
           <span className="pills-container">
             {track.genres.map((genre) => (
               <Pill key={genre.id} item={genre} />
@@ -58,7 +59,6 @@ const TrackListItem = ({ track, getDetails }) => {
           </span>
         </div>
         <div className="elements-pills-container">
-          <span className="pills-title">Elements:</span>
           <span className="pills-container">
             {track.elements.map((element) => (
               <Pill key={element.id} item={element} />
