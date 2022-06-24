@@ -1,6 +1,7 @@
 .tracklist-item{
     display: flex;
     padding: 10px;
+    padding-left: 15px;
 
     border-bottom: 1px solid rgba(128, 128, 128, 0.226);
 
@@ -8,7 +9,6 @@
         
         .item-img{
             max-width: 85px;
-            border-radius: 20px;
         }
     }
 

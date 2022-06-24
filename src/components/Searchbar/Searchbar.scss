@@ -1,10 +1,11 @@
 .app-search-bar{
-    height: 40px;
-    
+    height: 60px;
+
     display: flex;
     justify-content: space-between;
     outline: none;
     border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.226);;
 
     .btn{
         text-align: center;
@@ -16,9 +17,7 @@
         flex-grow: 4;
 
         font-weight: 400;
-        
         border: none;
-        border-radius: 25px;;
         outline: none;
         color: var(--darkblue);
     }
