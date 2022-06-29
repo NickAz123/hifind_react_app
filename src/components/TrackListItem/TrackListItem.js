@@ -13,10 +13,32 @@ const TrackListItem = ({ track, getDetails }) => {
     getDownloadURL(imageRef).then((url) => {
       setImage(url);
     });
-
-    console.log(imageRef);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const shortenString = (string, cutoffIndex) => {
+    let shortString = string;
+    if (string.length > cutoffIndex) {
+      shortString = string.slice(0, findStringCutoffIndex(string, cutoffIndex));
+      shortString += "...";
+    }
+    return shortString;
+  };
+
+  const findStringCutoffIndex = (string, cutoff) => {
+    let valid = false;
+    let cutoffIndex = cutoff;
+    console.log(cutoffIndex);
+
+    while (valid != true) {
+      if (string.charAt(0) !== string.charAt(cutoffIndex)) {
+        valid = true;
+      } else {
+        cutoffIndex = cutoffIndex - 1;
+      }
+      return cutoffIndex - 3;
+    }
+  };
 
   //get details fetch onClick={() => getDetails(track.id)}
   return (
@@ -27,7 +49,7 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="info-col">
         <div className="track-title-container">
-          <div className="title">{track.name} </div>{" "}
+          <div className="title">{shortenString(track.name, 20)} </div>{" "}
           <div className="artist">by {track.artist}</div>
         </div>
       </div>
