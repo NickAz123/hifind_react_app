@@ -1,6 +1,6 @@
 .app-search-bar{
-    height: 40px;
-    padding: 7px;
+    height: 60px;
+    padding: 10px;
 
     display: flex;
     justify-content: space-between;
@@ -18,7 +18,7 @@
         flex-grow: 4;
 
         font-weight: 400;
-        font-size: 10px;
+        font-size: 15px;
         border: none;
         outline: none;
         background-color: var(--grey);
