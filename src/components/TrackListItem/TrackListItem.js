@@ -2,17 +2,23 @@ import React, { useEffect, useState } from "react";
 import Pill from "../PIll/Pill";
 import { getDownloadURL } from "firebase/storage";
 import { getImageRef } from "../../constants/HelperFunctions";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./TrackListItem.scss";
 
 const TrackListItem = ({ track, getDetails }) => {
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(true);
   const imageRef = getImageRef(track.imagesrc);
 
   useEffect(() => {
-    getDownloadURL(imageRef).then((url) => {
-      setImage(url);
-    });
+    getDownloadURL(imageRef)
+      .then((url) => {
+        setImage(url);
+      })
+      .then(() => {
+        setLoading(false);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,7 +34,6 @@ const TrackListItem = ({ track, getDetails }) => {
   const findStringCutoffIndex = (string, cutoff) => {
     let valid = false;
     let cutoffIndex = cutoff;
-    console.log(cutoffIndex);
 
     while (valid != true) {
       if (string.charAt(0) !== string.charAt(cutoffIndex)) {
@@ -44,7 +49,11 @@ const TrackListItem = ({ track, getDetails }) => {
   return (
     <div className="tracklist-item">
       <div className="img-col">
-        <img src={image} className="item-img" alt=""></img>
+        {loading ? (
+          <CircularProgress className="item-img" />
+        ) : (
+          <img src={image} className="item-img" alt=""></img>
+        )}
       </div>
 
       <div className="info-col">
