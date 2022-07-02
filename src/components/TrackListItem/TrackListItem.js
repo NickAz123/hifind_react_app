@@ -49,11 +49,11 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="info-col">
         <div className="track-title-container">
-          <div className="title">{shortenString(track.name, 20)} </div>{" "}
-          <div className="artist">by {track.artist}</div>
+          <span className="title">{shortenString(track.name, 20)} </span>{" "}
+          <span className="artist">by {track.artist}</span>
         </div>
       </div>
-      <div className="info-col info-col-2">
+      {/* <div className="info-col info-col-2">
         <div className="track-credits">
           <div>
             Mixed by{" "}
@@ -70,7 +70,7 @@ const TrackListItem = ({ track, getDetails }) => {
             {track.producers == "" ? "(Not Available)" : track.producers}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="pills-col">
         <div className="genre-pills-container">

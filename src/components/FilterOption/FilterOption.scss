@@ -1,12 +1,16 @@
 .option{
     font-size: 14px;
-    font-weight: 500;
-    height: 30px;
+    font-weight: 400;
+    height: 20px;
     display: flex;
     margin-bottom: 5px;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
 
     justify-content: flex-start;
     align-items: center;
 
     border-radius: 25px;
+    border: none;
 }

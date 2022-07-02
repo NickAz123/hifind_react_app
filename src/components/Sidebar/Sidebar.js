@@ -54,12 +54,12 @@ function Sidebar({ handleFilter }) {
     <div className="sidebar-container">
       <div className="sidebar-title">Filters</div>
       <div className="sidebar-filters-container">
-        <div
+        <button
           className="sidebar-filter-title"
           onClick={() => setGenresOpen(!genresOpen)}
         >
           Genres
-        </div>
+        </button>
         {genresOpen && (
           <div className="filter-options genre-options">
             {genres.map((genre) => (
@@ -75,12 +75,12 @@ function Sidebar({ handleFilter }) {
           </div>
         )}
 
-        <div
+        <button
           className="sidebar-filter-title"
           onClick={() => setElementsOpen(!elementsOpen)}
         >
           Elements
-        </div>
+        </button>
         {elementsOpen && (
           <div className="filter-options element-options">
             {elements.map((element) => (
