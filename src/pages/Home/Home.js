@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 
 import "./Home.scss";
 import SearchList from "../../components/SearchList/SearchList";
+import MenusBar from "../../components/MenusBar/MenusBar";
 
 function Home() {
   const [genreFilter, setGenreFilter] = useState([]);
@@ -39,8 +40,13 @@ function Home() {
 
   return (
     <div className="main-container">
+      <MenusBar></MenusBar>
       <Sidebar handleFilter={handleFilter} />
-      <SearchList genreFilter={genreFilter} elementFilter={elementFilter} />
+      <SearchList
+        genreFilter={genreFilter}
+        elementFilter={elementFilter}
+        title="Search Reference Tracks"
+      />
     </div>
   );
 }

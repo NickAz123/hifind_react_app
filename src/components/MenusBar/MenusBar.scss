@@ -1,0 +1,16 @@
+.menusbar-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 3vw;
+    min-width: 70px;
+    background-color: var(--darkblue);
+
+    .menu-button{
+        background-color: var(--darkblue);
+        margin-bottom: 16px;
+        border: none;
+    }
+}

@@ -2,4 +2,11 @@
     width:100%;
     background-color: var(--white);
     border: 1px solid rgba(128, 128, 128, 0.226);
+
+    .main-title{
+        padding: 10px;
+        padding-bottom: 0px;
+        font-size: 30px;
+        font-weight: bold;
+    }
 }

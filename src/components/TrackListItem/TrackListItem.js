@@ -53,7 +53,7 @@ const TrackListItem = ({ track, getDetails }) => {
           <span className="artist">by {track.artist}</span>
         </div>
       </div>
-      {/* <div className="info-col info-col-2">
+      <div className="info-col info-col-2">
         <div className="track-credits">
           <div>
             Mixed by{" "}
@@ -65,12 +65,8 @@ const TrackListItem = ({ track, getDetails }) => {
               ? "(Not Available)"
               : track.masterengineer}
           </div>
-          <div>
-            Produced by{" "}
-            {track.producers == "" ? "(Not Available)" : track.producers}
-          </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="pills-col">
         <div className="genre-pills-container">
