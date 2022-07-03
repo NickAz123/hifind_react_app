@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import "./Login.scss";
+import { rootUrl } from "../../constants/ConnectionVariables.js";
 import { borderColor } from "@mui/system";
+import axios from "axios";
+
+import "./Login.scss";
 
 function Login() {
   const [user, setUser] = useState({
@@ -15,6 +18,24 @@ function Login() {
       ...user,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleSubmit = async () => {
+    let payload = {
+      user: {
+        username: user.username,
+        password: user.password,
+      },
+    };
+
+    axios
+      .post(rootUrl + "/login", payload)
+      .then((res) => {
+        console.log("response from server", res);
+      })
+      .catch((err) => {
+        console.log(err.response.status);
+      });
   };
 
   return (
@@ -45,7 +66,12 @@ function Login() {
             value={user.password}
             onChange={updateUser}
           />
-          <Button id="login-button" variant="contained" size="large">
+          <Button
+            onClick={handleSubmit}
+            id="login-button"
+            variant="contained"
+            size="large"
+          >
             LOG IN
           </Button>
         </div>
