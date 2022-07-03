@@ -59,6 +59,7 @@ function Login() {
           />
           <TextField
             className="input"
+            type="password"
             label="Password"
             size="small"
             variant="standard"
