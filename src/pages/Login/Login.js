@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { rootUrl } from "../../constants/ConnectionVariables.js";
 import { borderColor } from "@mui/system";
-import axios from "axios";
+import { login } from "../../constants/AuthFunctions";
 
 import "./Login.scss";
 
@@ -21,21 +20,7 @@ function Login() {
   };
 
   const handleSubmit = async () => {
-    let payload = {
-      user: {
-        username: user.username,
-        password: user.password,
-      },
-    };
-
-    axios
-      .post(rootUrl + "/login", payload)
-      .then((res) => {
-        console.log("response from server", res);
-      })
-      .catch((err) => {
-        console.log(err.response.status);
-      });
+    const res = login(user.username, user.password);
   };
 
   return (
