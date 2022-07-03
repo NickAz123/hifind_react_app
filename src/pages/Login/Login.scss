@@ -1,0 +1,47 @@
+.login-container{
+    height: 100%;
+    background-color: var(--darkblue);
+
+    .login-navbar{
+        padding-left: 14px;
+        color: white;
+
+        .hifind-logo{
+            font-size: 50px;
+            font-weight: 500;
+            
+            .patch-info{
+                font-size: 15px;
+                font-weight: 200;
+                color: var(--orange);
+            }
+        }
+    }
+
+    .login-main-area{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .login-card{
+            width: 400px;
+            height: 300px;
+            border-radius: 25px;
+            padding: 40px;
+
+            background-color: var(--white);
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+            .input{
+                margin-bottom: 12px;
+            }
+            #login-button{
+                margin-top: 40px;
+            }
+
+        }
+    }
+}
