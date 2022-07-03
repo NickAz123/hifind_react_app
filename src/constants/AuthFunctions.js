@@ -1,7 +1,7 @@
 import { rootUrl } from "./ConnectionVariables.js";
 import axios from "axios";
 
-const login = (username, password) => {
+const login = async (username, password) => {
   return axios
     .post(rootUrl + "/login", {
       user: {
@@ -23,6 +23,7 @@ const login = (username, password) => {
 
 const logout = () => {
   localStorage.removeItem("user");
+  window.location.replace("/login");
 };
 
 const getCurrentUser = () => {

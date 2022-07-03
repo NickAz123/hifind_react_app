@@ -4,16 +4,13 @@ import Button from "@mui/material/Button";
 import { login } from "../../constants/AuthFunctions";
 
 import "./Login.scss";
+import { Redirect } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
-
-  useEffect(() => {
-    console.log("hello");
-  }, []);
 
   const updateUser = (e) => {
     setUser({
@@ -22,8 +19,21 @@ function Login() {
     });
   };
 
-  const handleSubmit = async () => {
-    const res = login(user.username, user.password);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await login(user.username, user.password).then(
+        () => {
+          window.location.replace("/");
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -34,7 +44,7 @@ function Login() {
         </div>
       </div>
 
-      <div className="login-main-area">
+      <form onSubmit={handleSubmit} className="login-main-area">
         <div className="login-card">
           <TextField
             className="input"
@@ -56,6 +66,7 @@ function Login() {
             onChange={updateUser}
           />
           <Button
+            type="submit"
             onClick={handleSubmit}
             id="login-button"
             variant="contained"
@@ -64,7 +75,7 @@ function Login() {
             LOG IN
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
 import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { logout } from "../../constants/AuthFunctions";
 
 import "./MenusBar.scss";
 function MenusBar() {
@@ -19,6 +21,9 @@ function MenusBar() {
       </button>
       <button className="search-tracks-button menu-button">
         <SettingsIcon sx={{ color: "white", fontSize: 40 }} />
+      </button>
+      <button className="search-tracks-button menu-button">
+        <LogoutIcon onClick={logout} sx={{ color: "white", fontSize: 40 }} />
       </button>
     </div>
   );

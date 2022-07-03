@@ -9,15 +9,13 @@ import "./App.css";
 import { useEffect } from "react";
 
 function App() {
-  useEffect(() => {
-    const user = getCurrentUser();
-    console.log("logged in as", user);
-  });
   return (
     <div className="application-container">
-      <Route path="/create" component={Create} />
-      <PrivateRoute path="/" component={Home} />
-      <Route path="/login" component={Login} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <PrivateRoute path="/create" component={Create} />
+        <PrivateRoute path="/" component={Home} />
+      </Switch>
     </div>
   );
 }
