@@ -12,6 +12,16 @@ function Login() {
     password: "",
   });
 
+  const [nameError, setNameError] = useState({
+    error: false,
+    message: "",
+  });
+
+  const [passwordError, setPasswordError] = useState({
+    error: false,
+    message: "",
+  });
+
   const updateUser = (e) => {
     setUser({
       ...user,
@@ -19,20 +29,33 @@ function Login() {
     });
   };
 
+  const resetErrors = () => {
+    const resetObject = { error: false, message: "" };
+    setNameError(resetObject);
+    setPasswordError(resetObject);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    resetErrors();
 
     try {
-      await login(user.username, user.password).then(
-        () => {
+      await login(user.username, user.password).then((res) => {
+        if (res.user) {
           window.location.replace("/");
-        },
-        (err) => {
-          console.log(err);
+        } else {
+          switch (res.value) {
+            case "username":
+              setNameError({ error: true, message: res.error });
+              break;
+            case "password":
+              setPasswordError({ error: true, message: res.error });
+              break;
+          }
         }
-      );
+      });
     } catch (err) {
-      console.log(err);
+      console.log("error catch 2", err);
     }
   };
 
@@ -47,6 +70,8 @@ function Login() {
       <form onSubmit={handleSubmit} className="login-main-area">
         <div className="login-card">
           <TextField
+            error={nameError.error}
+            helperText={nameError.message}
             className="input"
             label="Username"
             size="small"
@@ -56,6 +81,8 @@ function Login() {
             onChange={updateUser}
           />
           <TextField
+            error={passwordError.error}
+            helperText={passwordError.message}
             className="input"
             type="password"
             label="Password"

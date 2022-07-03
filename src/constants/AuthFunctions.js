@@ -13,11 +13,10 @@ const login = async (username, password) => {
       if (res.data.token) {
         localStorage.setItem("user", JSON.stringify(res.data));
       }
-
       return res.data;
     })
     .catch((err) => {
-      return err.response.status;
+      return err.response.data;
     });
 };
 
