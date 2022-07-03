@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { borderColor } from "@mui/system";
 import { login } from "../../constants/AuthFunctions";
 
 import "./Login.scss";
@@ -11,6 +10,10 @@ function Login() {
     username: "",
     password: "",
   });
+
+  useEffect(() => {
+    console.log("hello");
+  }, []);
 
   const updateUser = (e) => {
     setUser({

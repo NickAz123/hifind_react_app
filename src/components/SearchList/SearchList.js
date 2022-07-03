@@ -8,7 +8,7 @@ function SearchList({ genreFilter, elementFilter, title }) {
 
   return (
     <div className="main">
-      <div class="main-title">{title}</div>
+      <div className="main-title">{title}</div>
       <Searchbar setSearchString={setSearchString} />
       <TrackList
         searchString={searchString}
