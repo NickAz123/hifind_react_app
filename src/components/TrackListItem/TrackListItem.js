@@ -25,7 +25,7 @@ const TrackListItem = ({ track, getDetails }) => {
 
   //get details fetch onClick={() => getDetails(track.id)}
   return (
-    <div className="tracklist-item">
+    <div className="tracklist-item" onClick={() => getDetails(track.id)}>
       <div className="img-col">
         {loading ? (
           <CircularProgress className="item-img" />

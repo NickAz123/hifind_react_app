@@ -7,7 +7,7 @@ function SearchList({ genreFilter, elementFilter, title }) {
   const [searchString, setSearchString] = useState("");
 
   return (
-    <div className="main">
+    <div className="searchlist-container">
       <div className="main-title">{title}</div>
       <Searchbar setSearchString={setSearchString} />
       <TrackList
