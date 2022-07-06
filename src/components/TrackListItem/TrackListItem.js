@@ -25,7 +25,7 @@ const TrackListItem = ({ track, getDetails }) => {
 
   //get details fetch onClick={() => getDetails(track.id)}
   return (
-    <div className="tracklist-item" onClick={() => getDetails(track.id)}>
+    <button className="tracklist-item" onClick={() => getDetails(track.id)}>
       <div className="img-col">
         {loading ? (
           <CircularProgress className="item-img" />
@@ -36,8 +36,8 @@ const TrackListItem = ({ track, getDetails }) => {
 
       <div className="info-col">
         <div className="track-title-container">
-          <span className="title">{shortenString(track.name, 20)} </span>{" "}
-          <span className="artist">by {shortenString(track.artist, 15)}</span>
+          <div className="title">{shortenString(track.name, 20)} </div>{" "}
+          <div className="artist">by {shortenString(track.artist, 15)}</div>
         </div>
       </div>
       <div className="info-col info-col-2">
@@ -71,7 +71,7 @@ const TrackListItem = ({ track, getDetails }) => {
           </span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

@@ -197,14 +197,7 @@ function Create() {
         onChange={updateTrack}
         name="releasedate"
       ></input>
-      <br></br>
-      <label>Image Src</label>
-      <input
-        type="text"
-        value={track.imagesrc}
-        onChange={updateTrack}
-        name="imagesrc"
-      ></input>
+
       <br></br>
       <br></br>
       <label>Description</label>
@@ -262,6 +255,14 @@ function Create() {
           setImageUpload(e.target.files[0]);
         }}
       />
+      <br></br>
+      <label>Image Src</label>
+      <input
+        type="text"
+        value={track.imagesrc}
+        onChange={updateTrack}
+        name="imagesrc"
+      ></input>
       <div>{JSON.stringify(track)}</div>
       <button type="button" onClick={submitTrack}>
         Create
