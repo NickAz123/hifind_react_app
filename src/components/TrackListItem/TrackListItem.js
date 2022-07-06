@@ -3,6 +3,7 @@ import Pill from "../PIll/Pill";
 import { getDownloadURL } from "firebase/storage";
 import { getImageRef } from "../../constants/HelperFunctions";
 import CircularProgress from "@mui/material/CircularProgress";
+import { shortenString } from "../../constants/HelperFunctions";
 
 import "./TrackListItem.scss";
 
@@ -22,29 +23,6 @@ const TrackListItem = ({ track, getDetails }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const shortenString = (string, cutoffIndex) => {
-    let shortString = string;
-    if (string.length > cutoffIndex) {
-      shortString = string.slice(0, findStringCutoffIndex(string, cutoffIndex));
-      shortString += "...";
-    }
-    return shortString;
-  };
-
-  const findStringCutoffIndex = (string, cutoff) => {
-    let valid = false;
-    let cutoffIndex = cutoff;
-
-    while (valid != true) {
-      if (string.charAt(0) !== string.charAt(cutoffIndex)) {
-        valid = true;
-      } else {
-        cutoffIndex = cutoffIndex - 1;
-      }
-      return cutoffIndex - 3;
-    }
-  };
-
   //get details fetch onClick={() => getDetails(track.id)}
   return (
     <div className="tracklist-item">
@@ -59,7 +37,7 @@ const TrackListItem = ({ track, getDetails }) => {
       <div className="info-col">
         <div className="track-title-container">
           <span className="title">{shortenString(track.name, 20)} </span>{" "}
-          <span className="artist">by {track.artist}</span>
+          <span className="artist">by {shortenString(track.artist, 15)}</span>
         </div>
       </div>
       <div className="info-col info-col-2">

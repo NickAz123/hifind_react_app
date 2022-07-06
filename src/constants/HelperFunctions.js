@@ -45,4 +45,27 @@ const filterDataByFilters = (filterAr, dataAr, option) => {
   return filteredData;
 };
 
-export { getImageRef, filterDataByFilters, filterDataByQuery };
+const shortenString = (string, cutoffIndex) => {
+  let shortString = string;
+  if (string.length > cutoffIndex) {
+    shortString = string.slice(0, findStringCutoffIndex(string, cutoffIndex));
+    shortString += "...";
+  }
+  return shortString;
+};
+
+const findStringCutoffIndex = (string, cutoff) => {
+  let valid = false;
+  let cutoffIndex = cutoff;
+
+  while (valid != true) {
+    if (string.charAt(0) !== string.charAt(cutoffIndex)) {
+      valid = true;
+    } else {
+      cutoffIndex = cutoffIndex - 1;
+    }
+    return cutoffIndex - 3;
+  }
+};
+
+export { getImageRef, filterDataByFilters, filterDataByQuery, shortenString };
